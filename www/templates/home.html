@@ -1,5 +1,33 @@
 <ion-view view-title="Bright Star Connect">
   <ion-content>
-    <h1>Bright Star Connect</h1>
+    <div class="card">
+      <div class="item item-text-wrap item-stable">
+        <h1>Bright Star Connect</h1>
+        <p>Welcome to the Bright Star Connect app!</p><br>
+        <p>Here you can find a list of events going on at the church and
+        register for them right here in the app!!!</p><br>
+        <p>Ionic App built for Final Project of Coursera Full Stack Web Development Specialization.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider item-calm">
+        Instructions
+      </div>
+      <div class="item item-text-wrap">
+        <p>Use the menu to view events and register from there!!</p><br>
+        <p><b>Note:</b> Register and/or Cancel of an event registration will send you an email.  Try it out!!!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider item-calm">
+        Technologies Used
+      </div>
+      <div class="item item-text-wrap">
+        <p ng-repeat="tech in technologies">{{tech.name}}<br></p>
+      </div>
+    </div>
+    
   </ion-content>
 </ion-view>

@@ -36,7 +36,8 @@ angular.module('brightstarConnect', ['ionic', 'brightstarConnect.controllers'])
     url: '/home',
     views: {
       'mainContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller: 'homeCtrl'
       }
     }
   })
@@ -46,7 +47,7 @@ angular.module('brightstarConnect', ['ionic', 'brightstarConnect.controllers'])
       views: {
         'mainContent': {
           templateUrl: 'templates/event-list.html',
-          controller: ''
+          controller: 'eventsCtrl'
         }
       }
     })

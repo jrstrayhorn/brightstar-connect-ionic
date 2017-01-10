@@ -41,16 +41,21 @@ angular.module('brightstarConnect.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('homeCtrl', function($scope) {
+  $scope.technologies = [
+    { name: 'Ionic 1' },
+    { name: 'Angular 1.x'}
   ];
 })
+
+.controller('eventsCtrl', ['$scope', 'eventService', function($scope, eventService) {
+  $scope.events = [];
+
+  eventService.GetAll()
+    .then(function (events) {
+      $scope.events = events;
+    });
+}])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
