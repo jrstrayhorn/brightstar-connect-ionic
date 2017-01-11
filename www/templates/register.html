@@ -1,5 +1,5 @@
 <ion-modal-view>
-    <ion-header-bar>
+    <ion-header-bar class="bar-positive">
         <h1 class="title">Register</h1>
         <div class="buttons">
             <button class="button button-light" ng-click="closeRegister()">Close</button>
@@ -8,9 +8,9 @@
     <ion-content>
         <form ng-submit="doRegister()">
             <div class="list">
-                <label class="item" ng-show="error">
+                <label class="item assertive item-text-wrap" ng-show="error">
                     <span>
-                        {{error.message}}
+                        {{error}}
                     </span>
                 </label>
                 <label class="item">

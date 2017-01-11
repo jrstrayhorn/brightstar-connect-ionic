@@ -57,7 +57,7 @@ angular.module('brightstarConnect.controllers', [])
     });
 }])
 
-.controller('eventDetailsCtrl', ['$scope', 'eventService', '$stateParams', '$ionicModal', function($scope, eventService, $stateParams, $ionicModal) {
+.controller('eventDetailsCtrl', ['$scope', 'eventService', '$stateParams', '$ionicModal', '$ionicPopup', '$state', function($scope, eventService, $stateParams, $ionicModal, $ionicPopup, $state) {
 
   $scope.event = {};
 
@@ -91,11 +91,39 @@ angular.module('brightstarConnect.controllers', [])
     $scope.registerForm.show();
   }
 
+  // confirm dialog
+  $scope.showConfirm = function() {
+    var confirmPopup = $ionicPopup.alert({
+      title: 'Registration saved.',
+      template: 'Email confirmation has been sent.'
+    });
+
+    confirmPopup.then(function(res) {
+      // close register form
+      $scope.closeRegister();
+      $state.go('app.events');
+    });
+  };
+
   // Perform the register action when the user submits the register form
   $scope.doRegister = function() {
-    console.log('Doing register ', $scope.registration);
 
-    $scope.closeRegister();
+    // clear error messages
+    $scope.error = {};
+
+    eventService.SaveRegistration($stateParams._id, $scope.registration)
+      .then(function() {
+        // show confirmation pop up
+        $scope.showConfirm();
+      })
+      .catch(function (error) {
+        if(error.message) {
+          $scope.error = error.message;
+        } else {
+          $scope.error = error;
+        }
+      });
+
   };
 
 }])

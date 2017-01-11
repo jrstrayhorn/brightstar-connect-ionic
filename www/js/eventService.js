@@ -6,6 +6,7 @@ angular.module('brightstarConnect').factory('eventService', ['$http', '$q', func
 
     service.GetAll = GetAll;
     service.GetById = GetById;
+    service.SaveRegistration = SaveRegistration;
 
     return service;
 
@@ -15,6 +16,11 @@ angular.module('brightstarConnect').factory('eventService', ['$http', '$q', func
 
     function GetById(_id) {
         return $http.get(baseURL + apiUrl + '/' + _id).then(handleSuccess, handleError);
+    }
+
+    function SaveRegistration(_id, registration) {
+        return $http.post(baseURL + apiUrl + '/' + _id + '/registrations', registration)
+            .then(handleSuccess, handleError);
     }
 
     // private functions
