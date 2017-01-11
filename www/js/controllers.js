@@ -57,5 +57,47 @@ angular.module('brightstarConnect.controllers', [])
     });
 }])
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('eventDetailsCtrl', ['$scope', 'eventService', '$stateParams', '$ionicModal', function($scope, eventService, $stateParams, $ionicModal) {
+
+  $scope.event = {};
+
+  initController();
+
+  function initController() {
+    if($stateParams._id) {
+      eventService.GetById($stateParams._id)
+        .then(function(event) {
+          $scope.event = event;
+        });
+    }
+  }
+
+  $scope.registration = {};
+
+  // create the registration modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/register.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.registerForm = modal;
+  });
+
+  // triggered in the register modal to close it
+  $scope.closeRegister = function() {
+    $scope.registerForm.hide();
+  };
+
+  // Open the register modal
+  $scope.register = function() {
+    $scope.registerForm.show();
+  }
+
+  // Perform the register action when the user submits the register form
+  $scope.doRegister = function() {
+    console.log('Doing register ', $scope.registration);
+
+    $scope.closeRegister();
+  };
+
+}])
+
+;

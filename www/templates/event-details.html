@@ -1,5 +1,16 @@
 <ion-view view-title="Event Details">
   <ion-content>
-    <h1>Event Details</h1>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <h1>{{event.name}}</h1>
+        <p>Event Date: {{ event.date | date:"fullDate" }}</p><br>
+        <p>To register for this event, click the Register button below.</p>
+      </div>
+    </div>
+    <div style="padding:0px 10px">
+      <button class="button button-block button-calm" ng-click="register()">
+        Register for Event
+      </button>
+    </div>
   </ion-content>
 </ion-view>

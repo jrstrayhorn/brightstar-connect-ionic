@@ -5,11 +5,16 @@ angular.module('brightstarConnect').factory('eventService', ['$http', '$q', func
     var service = {};
 
     service.GetAll = GetAll;
+    service.GetById = GetById;
 
     return service;
 
     function GetAll() {
         return $http.get(baseURL + apiUrl).then(handleSuccess, handleError);
+    }
+
+    function GetById(_id) {
+        return $http.get(baseURL + apiUrl + '/' + _id).then(handleSuccess, handleError);
     }
 
     // private functions

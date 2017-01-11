@@ -57,7 +57,7 @@ angular.module('brightstarConnect', ['ionic', 'brightstarConnect.controllers'])
     views: {
       'mainContent': {
         templateUrl: 'templates/event-details.html',
-        controller: ''
+        controller: 'eventDetailsCtrl'
       }
     }
   });
