@@ -109,7 +109,7 @@ angular.module('brightstarConnect.controllers', [])
   $scope.doRegister = function() {
 
     // clear error messages
-    $scope.error = {};
+    $scope.error = '';
 
     eventService.SaveRegistration($stateParams._id, $scope.registration)
       .then(function() {
